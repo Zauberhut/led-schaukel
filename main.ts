@@ -4,6 +4,7 @@ input.onButtonPressed(Button.A, function () {
 input.onButtonPressed(Button.B, function () {
     AnzahlPixel += 1
 })
+// Initialisierung
 let blau = 0
 let gruen = 0
 let stripLaenge = 60
@@ -14,6 +15,9 @@ let Position = stripLaenge / 2
 let rot = randint(2, 255)
 basic.forever(function () {
     strip.clear()
+    // Neigung links - rechts = -1023 bis 1023
+    // waagrecht = 0
+    // wird umgewandelt in Positionsänderung
     Position += pins.map(
     input.acceleration(Dimension.X),
     0,
@@ -21,6 +25,7 @@ basic.forever(function () {
     0,
     2
     )
+    // Beschränkungen nach oben und unten
     if (Position > stripLaenge - AnzahlPixel) {
         Position = stripLaenge - AnzahlPixel - 1
     }
@@ -32,6 +37,7 @@ basic.forever(function () {
         gruen = randint(2, 255)
         blau = randint(2, 255)
     }
+    // AnzahlPixel auswählen und aktivieren
     for (let Index = 0; Index <= AnzahlPixel - 1; Index++) {
         strip.setPixelColor(Index + Position, neopixel.rgb(rot, gruen, blau))
     }
