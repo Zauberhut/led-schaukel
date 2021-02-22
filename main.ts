@@ -33,6 +33,7 @@ basic.forever(function () {
         Position = 0
     }
     if (input.isGesture(Gesture.Shake)) {
+        // Schütteln erzeugt eine zufällige Farbe
         rot = randint(2, 255)
         gruen = randint(2, 255)
         blau = randint(2, 255)
@@ -42,5 +43,5 @@ basic.forever(function () {
         strip.setPixelColor(Index + Position, neopixel.rgb(rot, gruen, blau))
     }
     strip.show()
-    basic.pause(2)
+    basic.pause(3)
 })
